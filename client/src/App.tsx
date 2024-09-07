@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { setupIonicReact, IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
 /* Core CSS required for Ionic components to work properly */
@@ -17,29 +17,27 @@ import '@ionic/react/css/text-alignment.css';
 import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
+import '@ionic/react/css/palettes/dark.always.css';
 
-/* Theme variables */
-import './theme/variables.css';
-import Simulation from './pages/Simulation';
+/* Cesium CSS */
+import "cesium/Build/Cesium/Widgets/widgets.css";
+
+import Main from './pages/Main';
+
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/">
-          <Simulation />
-        </Route>
-        {/* <Route exact path="/home">
-          <Home />
-        </Route> */}
-        {/* <Route exact path="/">
-          <Redirect to="/" />
-        </Route> */}
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route exact path="/" component={Main} />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
+}
 
 export default App;
